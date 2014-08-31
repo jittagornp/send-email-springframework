@@ -1,20 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.pamarin.learning.mail;
 
+import java.io.File;
 import java.util.Properties;
 import javax.activation.CommandMap;
 import javax.activation.MailcapCommandMap;
 import javax.mail.internet.MimeMessage;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 /**
  *
- * @author anonymous
+ * @author jittagorn pitakmetagoon
  */
 public class EmailSender {
 
@@ -25,6 +22,9 @@ public class EmailSender {
 
     private static final String emailSubject = "test send email";
     private static final String emailMessage = "test!!!";
+    //
+    private static final String ATTACH_FILE_PATH = "";
+    private static final String ATTACH_FILE_NAME = "";
 
     static {
         MailcapCommandMap mc = (MailcapCommandMap) CommandMap.getDefaultCommandMap();
@@ -59,6 +59,11 @@ public class EmailSender {
         helper.setSubject(emailSubject);
         helper.setText(emailMessage);
 
+//        File directory = new File(ATTACH_FILE_PATH); 
+//        FileSystemResource file = new FileSystemResource(new File(directory, ATTACH_FILE_NAME));
+//        helper.addAttachment(ATTACH_FILE_NAME, file);
+ 
+        
         helper.setTo(DESTINATION_EMAIL);
         sender.send(message);
     }
